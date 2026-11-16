@@ -2,8 +2,6 @@ using System;
 
 namespace TallerModular
 {
-    // CASO 1: Sistema de control de turnos para una IPS.
-    // Se usan VECTORES PARALELOS: la posición i de cada vector pertenece al mismo paciente.
     internal static class SistemaIPS
     {
         const int MAX_PACIENTES = 30;
@@ -11,13 +9,13 @@ namespace TallerModular
         static string[] documentos = new string[MAX_PACIENTES];
         static string[] nombres = new string[MAX_PACIENTES];
         static int[] edades = new int[MAX_PACIENTES];
-        static int[] tipos = new int[MAX_PACIENTES];        // índice en TIPOS_ATENCION
-        static int[] prioridades = new int[MAX_PACIENTES];  // 1 a 5 (5 = más urgente)
-        static int cantidad = 0;                            // pacientes registrados hasta ahora
+        static int[] tipos = new int[MAX_PACIENTES];        
+        static int[] prioridades = new int[MAX_PACIENTES];  
+        static int cantidad = 0;                            
 
         static readonly string[] TIPOS_ATENCION = { "Urgencias", "Consulta General", "Prioritaria" };
 
-        // ---------- Procedimiento principal del módulo (su propio menú) ----------
+        
         public static void Ejecutar()
         {
             int opcion;
@@ -46,9 +44,6 @@ namespace TallerModular
             } while (opcion != 0);
         }
 
-        // ---------- FUNCIONES (devuelven un valor) ----------
-
-        // Devuelve la posición del paciente o -1 si no existe.
         static int BuscarPosicion(string documento)
         {
             for (int i = 0; i < cantidad; i++)
@@ -59,14 +54,11 @@ namespace TallerModular
             return -1;
         }
 
-        // Devuelve true si todavía hay cupos.
         static bool HayCupos()
         {
             return cantidad < MAX_PACIENTES;
         }
 
-        // Devuelve la posición del paciente con prioridad más alta (-1 si no hay pacientes).
-        // En caso de empate gana el que se registró primero.
         static int PosicionMayorPrioridad()
         {
             if (cantidad == 0) return -1;
@@ -80,7 +72,6 @@ namespace TallerModular
             return mejor;
         }
 
-        // Devuelve un vector con cuántos pacientes hay de cada tipo de atención.
         static int[] ContarPorTipo()
         {
             int[] conteo = new int[TIPOS_ATENCION.Length];
@@ -91,7 +82,6 @@ namespace TallerModular
             return conteo;
         }
 
-        // ---------- PROCEDIMIENTOS (no devuelven valor) ----------
 
         static void RegistrarPaciente()
         {
@@ -121,7 +111,7 @@ namespace TallerModular
 
             prioridades[cantidad] = Utilidades.LeerEntero("Nivel de prioridad (1 a 5, siendo 5 la más alta): ", 1, 5);
 
-            cantidad++; // solo se incrementa cuando TODOS los datos ya son válidos
+            cantidad++; 
             Console.WriteLine($"Paciente registrado. Cupos restantes: {MAX_PACIENTES - cantidad}");
         }
 

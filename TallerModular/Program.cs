@@ -4,7 +4,6 @@ namespace TallerModular
 {
     internal static class Program
     {
-        // Main SOLO orquesta: muestra el menú, lee la opción y llama al módulo elegido.
         static void Main()
         {
             Utilidades.ConfigurarConsola();
@@ -24,7 +23,7 @@ namespace TallerModular
                         ControlAcademico.Ejecutar();
                         break;
                     case 3:
-                        ProduccionFabrica.Ejecutar();
+                        Parqueadero.Ejecutar();
                         break;
                     case 0:
                         Console.WriteLine("\nHasta pronto.");
@@ -33,14 +32,13 @@ namespace TallerModular
             } while (opcion != 0);
         }
 
-        // PROCEDIMIENTO: no devuelve nada, solo imprime.
         static void MostrarMenu()
         {
             Console.Clear();
             Console.WriteLine("=== TALLER ALGORITMOS MODULARES ===");
             Console.WriteLine("1. Sistema de turnos IPS");
             Console.WriteLine("2. Control académico (notas)");
-            Console.WriteLine("3. Producción de la fábrica");
+            Console.WriteLine("3. Parqueadero de visitantes");
             Console.WriteLine("0. Salir");
             Console.WriteLine("-----------------------------------");
         }
